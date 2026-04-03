@@ -1,0 +1,23 @@
+docker run -d -p 8080:80 --name mynginx nginx
+
+docker run -d -p 9000:80 --name mynginx nginx
+
+
+docker rm mynginx
+
+docker stop mynginx
+
+docker rm -f  ---> force remove container eg: docker rm -f mynginx
+
+docker rmi ---> Used to remove images, not containers. eg: docker rmi nginx
+
+
+docker rmi -f ---> Force remove image even if: A stopped container is using it eg: docker rmi -f nginx
+
+
+docker run -it ubuntu /bin/bash
+
+
+docker exec -it <container_id> bash
+
+docker logs 590fb635c3d9e122fea40b2c9ae7ff565acd606964df73b1f6ad93d91a72db78
