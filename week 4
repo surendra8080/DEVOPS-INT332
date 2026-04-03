@@ -1,0 +1,73 @@
+docker run -dit --name <container_name>  <image_name> --> it will create a new container and run that here -d means detached mode. 
+
+
+docker start <container_id> --> to run the existing container
+
+
+docker logs <container_id> ---> Shows output printed by the container.
+
+
+docker inspect <container_id> --->Gives detailed configuration & metadata of a container (or image)
+
+
+
+docker stats <container_id> -->gives the cpu usage and storage details
+
+docker top <container_id> --->gives the process that are running in the container
+
+
+
+docker network ls ---> list the network used by the docker
+
+docker network create <network_name> --->create a new network
+
+docker network rm <network_name> ---> removes the  existing network
+
+docker stop $(docker ps -aq) ---> stops all container 
+
+docker rm $(docker ps -aq) ---> removes all container
+
+docker rmi $(docker images -aq) ---> removes all pulled or existing images
+
+docker --version ---> to check the version
+
+docker info
+
+docker history <image_name>
+ex: docker history httpd 
+
+docker images ---> gives the images which are existing
+
+docker run httpd echo "Hello, World!"
+
+docker run -e MY_VAR=value httpd env
+
+
+
+docker run -d
+	-e MYSQL_ROOT_PASSWORD=root123
+	-e MYSQL_DATABASE=college
+	-e MYSQL_USER=ADMIN
+	-e MYSQL_PASSWORD=ADMIN123
+	MySQL:8
+
+docker run -p 8080:80 httpd
+
+---> 8080 is for host
+---> 80 is for container port
+
+
+docker run -d -p 3307:3306 --name mysql-test -e MY_SQL_ROOT_PASWORD=root123  mysql
+
+-d --> detached mode, -p ---> to assign the port, --name is for giving container name, -e is for setting the environment variable, mysql is the image name
+
+
+
+C:\Users\gokul>docker run -it --name ubuntu_test -e COLLEGE=CSE ubuntu
+root@2f84c84672df:/# echo $COLLEGE
+CSE
+root@2f84c84672df:/# exit
+exit
+
+
+docker rmi -f <container_id> ---> to stop the container forcefully
