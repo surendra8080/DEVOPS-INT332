@@ -1,0 +1,21 @@
+cgroups:
+        cgroups are used to limit the resources. So, that no process can eat the entire cgroups
+
+
+namespace:
+        namespace is used for isolation
+    types:
+        PID:
+            Process ID namespace is used to bring the isolation between the process id that each container has its own unique process id sequence.
+        Mount:
+            Mount namespace is used to isolate the filesystem mount points
+            that each container has its root filesystem and cannot see the host root unless it is mounted
+        Network:
+            Network namespace isolates the network interfaces, IP address, ports and each container has its own IP address, routing table, virtual network interface.
+        UTS:
+            unix time sharing system namespace isolates the host name and domain name. So each container has its own host name.
+        IPC:
+            Inter process communication namespace isolates the shared memory, message queue, semaphores. So even if two containers are sharing 
+            the same resources they can't communicate with each other.
+        User:
+            User namespace is to isolate the user IDs and group IDs. 
