@@ -63,7 +63,7 @@ docker run -d -p 3307:3306 --name mysql-test -e MY_SQL_ROOT_PASWORD=root123  mys
 
 
 
-C:\Users\gokul>docker run -it --name ubuntu_test -e COLLEGE=CSE ubuntu
+C:\Users\KOLLA>docker run -it --name ubuntu_test -e COLLEGE=CSE ubuntu
 root@2f84c84672df:/# echo $COLLEGE
 CSE
 root@2f84c84672df:/# exit
