@@ -1,0 +1,21 @@
+PS C:\Users\KOLLA> docker run -d -p 8098:80 --name mysite httpd
+70a4fab9f3d3586869cb222da0a9d063a036b0febe4cf0daad497a2780ca8bff
+
+
+PS C:\Users\KOLLA> docker exec -it  mysite bash
+
+root@70a4fab9f3d3:/usr/local/apache2# ls
+bin  build  cgi-bin  conf  error  htdocs  icons  include  logs  modules
+
+root@70a4fab9f3d3:/usr/local/apache2# cd htdocs
+
+root@70a4fab9f3d3:/usr/local/apache2/htdocs# ls
+index.html
+
+PS C:\Users\KOLLA> notepad index.html
+
+PS C:\Users\KOLLA> cat index.html
+<h1>Hello World</h1>
+
+PS C:\Users\KOLLA> docker cp index.html mysite:/usr/local/apache2/htdocs/
+Successfully copied 2.05kB to mysite:/usr/local/apache2/htdocs/
