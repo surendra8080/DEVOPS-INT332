@@ -1,0 +1,10 @@
+docker exec -it <container_name> bash
+mkdir /project
+touch /project/report.txt
+echo "This is our container interaction with our host mechane." > /project/report.txt
+cat /project/report.txt
+touch /project/notes.txt
+echo "This is an additional notes file inside project directory." >> /project/notes.txt
+ls /project
+exit
+docker cp <container_name>:/project/report.txt ~/Desktop/
