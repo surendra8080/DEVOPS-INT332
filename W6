@@ -1,0 +1,91 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\KOLLA> docker pull httpd
+Using default tag: latest
+latest: Pulling from library/httpd
+Digest: sha256:bdba5c86022f2d6ad0783168b07fe80541fe45e97b434b13ba8c959a5050fb6b        
+Status: Downloaded newer image for httpd:latest
+docker.io/library/httpd:latest
+PS C:\Users\KOLLA> docker ls
+docker: unknown command: docker ls
+
+Run 'docker --help' for more information
+PS C:\Users\KOLLA> mkdir node-app
+
+
+    Directory: C:\Users\KOLLA
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        08-04-2026     13:24                node-app
+
+
+PS C:\Users\KOLLA> cd node-app
+PS C:\Users\KOLLA\node-app> notepad app.js
+PS C:\Users\KOLLA\node-app> notepad package.json
+PS C:\Users\KOLLA\node-app> notepad dcokerfile.txt
+PS C:\Users\KOLLA\node-app> rename-Item dockerfile.txt Dockerfile    
+rename-Item : Cannot rename because item at 'dockerfile.txt' does not exist.
+At line:1 char:1
++ rename-Item dockerfile.txt Dockerfile
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [Rename-Item], PSInvalidOperation  
+   Exception
+    + FullyQualifiedErrorId : InvalidOperation,Microsoft.PowerShell.Commands.RenameIt  
+   emCommand
+
+PS C:\Users\KOLLA\node-app> rename
+rename : The term 'rename' is not recognized as the name of a cmdlet, function, 
+script file, or operable program. Check the spelling of the name, or if a path was     
+included, verify that the path is correct and try again.
+At line:1 char:1
++ rename
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (rename:String) [], CommandNotFoundExce  
+   ption
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\KOLLA\node-app> 
+PS C:\Users\KOLLA\node-app> rename-Item dcokerfile.txt Dockerfile
+PS C:\Users\KOLLA\node-app> docker build -t node-demo:v1
+ERROR: docker: 'docker buildx build' requires 1 argument
+
+Usage:  docker buildx build [OPTIONS] PATH | URL | -
+
+Run 'docker buildx build --help' for more information
+PS C:\Users\KOLLA\node-app> docker build -t node-demo:v1 .
+[+] Building 42.9s (11/11) FINISHED                               docker:desktop-linux
+ => [internal] load build definition from Dockerfile                              0.1s
+ => => transferring dockerfile: 160B                                              0.0s 
+ => [internal] load metadata for docker.io/library/node:18-alpine                13.2s 
+ => [auth] library/node:pull token for registry-1.docker.io                       0.0s
+ => [internal] load .dockerignore                                                 0.1s
+ => => transferring context: 2B                                                   0.0s 
+ => [1/5] FROM docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc498  23.3s 
+ => => resolve docker.io/library/node:18-alpine@sha256:8d6421d663b4c28fd3ebc4983  0.1s 
+ => => sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80 446B / 446B  4.2s
+ => => sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b7 3.64MB / 3.64MB  17.1s
+ => => sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd 1.26MB / 1.26MB  6.1s 
+ => => sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc 40.01MB / 40.01MB  21.7s 
+ => => extracting sha256:f18232174bc91741fdf3da96d85011092101a032a93a388b79e99e6  0.0s 
+ => => extracting sha256:dd71dde834b5c203d162902e6b8994cb2309ae049a0eabc4efea161  1.2s 
+ => => extracting sha256:1e5a4c89cee5c0826c540ab06d4b6b491c96eda01837f430bd47f0d  0.1s 
+ => => extracting sha256:25ff2da83641908f65c3a74d80409d6b1b62ccfaab220b9ea70b80d  0.0s 
+ => [internal] load build context                                                 0.1s 
+ => => transferring context: 436B                                                 0.0s 
+ => [2/5] WORKDIR /app                                                            0.4s 
+ => [3/5] COPY package.json .                                                     0.1s 
+ => [4/5] RUN npm install                                                         4.4s 
+ => [5/5] COPY app.js .                                                           0.1s 
+0s
+ => => exporting manifest list sha256:9eab0681e72634b459882bd30e67c31ae091a26d39  0.0s
+ => => naming to docker.io/library/node-demo:v1                                   0.0s
+ => => unpacking to docker.io/library/node-demo:v1                                0.4s
+PS C:\Users\KOLLA\node-app> Docker run -d -p 3000:3000 --name node-container node-demo:v1
+9f65bcd5a00e6ee706d7d2c4c0d805b510c2369da00e81b5d92983d6889fbc06
+PS C:\Users\KOLLA\node-app> ^C
+PS C:\Users\KOLLA\node-app>
