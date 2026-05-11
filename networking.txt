@@ -1,0 +1,83 @@
+docker network ls
+----> gives the every network created
+-----> PS C:\Users\KOLLA> docker network ls
+NETWORK ID NAME DRIVER SCOPE
+9cc501d0f20f bridge bridge local
+84d85ce0b4fe eda_default bridge local
+251e216ad73a for_airflow_default bridge local
+d4bdce72060a host host local
+394b455506cb none null local
+12b8afd0708d project_video_ad_default bridge local
+
+docker network inspect bridge
+----> to inspect the bridge
+----> PS C:\Users\KOLLA> docker network inspect eda_default
+[
+{
+"Name": "eda_default",
+"Id": "84d85ce0b4fe307e1507b69dbc9753935426f692611fccf7671260702acaf51b",
+"Created": "2026-03-05T12:35:55.373260161Z",
+"Scope": "local",
+"Driver": "bridge",
+"EnableIPv4": true,
+"EnableIPv6": false,
+"IPAM": {
+"Driver": "default",
+"Options": null,
+"Config": [
+{
+"Subnet": "172.20.0.0/16",
+"Gateway": "172.20.0.1"
+}
+]
+},
+"Internal": false,
+"Attachable": false,
+"Ingress": false,
+"ConfigFrom": {
+"Network": ""
+},
+"ConfigOnly": false,
+"Options": {
+"com.docker.network.enable_ipv4": "true",
+"com.docker.network.enable_ipv6": "false"
+},
+"Labels": {
+"com.docker.compose.config-hash": "b77610035e1e948eacefd1c1a969b9c19090c199da7a78e715aa11dc3f24aaf2",
+"com.docker.compose.network": "default",
+"com.docker.compose.project": "eda",
+"com.docker.compose.version": "2.40.3"
+},
+"Containers": {},
+"Status": {
+"IPAM": {
+"Subnets": {
+"172.20.0.0/16": {
+"IPsInUse": 3,
+"DynamicIPsAvailable": 65533
+}
+}
+}
+}
+}
+]
+
+docker network create my_bridge_net
+----> to create a new network
+----> PS C:\Users\KOLLA> docker network create my_bridge_net
+23290be0dfdf4cb07884971aa4a485f6bb49734c7f485d1a27fdbaa9642eaaaf
+PS C:\Users\KOLLA> docker network ls
+NETWORK ID NAME DRIVER SCOPE
+9cc501d0f20f bridge bridge local
+84d85ce0b4fe eda_default bridge local
+251e216ad73a for_airflow_default bridge local
+d4bdce72060a host host local
+23290be0dfdf my_bridge_net bridge local
+394b455506cb none null local
+12b8afd0708d project_video_ad_default bridge local
+
+docker run -d --name container1 --network my_bridge_net nginx
+----> assigning a network to a container1
+---->
+PS C:\Users\KOLLA> docker run -d --name container1 --network my_bridge_net nginx
+021a2edc159e3a0468fa15d6481d417de7e3c7200bb380c917d35bd992783427
