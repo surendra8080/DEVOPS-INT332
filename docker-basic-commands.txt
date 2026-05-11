@@ -1,0 +1,43 @@
+docker --version 
+---> to check the version
+
+docker info
+
+docker history <image_name>
+ex: docker history httpd 
+
+docker images ---> gives the images which are existing
+
+docker run httpd echo "Hello, World!"
+
+docker run -e MY_VAR=value httpd env
+
+
+
+docker run -d
+	-e MYSQL_ROOT_PASSWORD=root123
+	-e MYSQL_DATABASE=college
+	-e MYSQL_USER=ADMIN
+	-e MYSQL_PASSWORD=ADMIN123
+	MySQL:8
+
+docker run -p 8080:80 httpd
+
+---> 8080 is for host
+---> 80 is for container port
+
+
+docker run -d -p 3307:3306 --name mysql-test -e MY_SQL_ROOT_PASWORD=root123  mysql
+
+-d --> detached mode, -p ---> to assign the port, --name is for giving container name, -e is for setting the environment variable, mysql is the image name
+
+
+
+C:\Users\KOLLA>docker run -it --name ubuntu_test -e COLLEGE=CSE ubuntu
+root@2f84c84672df:/# echo $COLLEGE
+CSE
+root@2f84c84672df:/# exit
+exit
+
+
+docker rmi -f <container_id> ---> to stop the container forcefully
